@@ -5,7 +5,8 @@
 [![SIGDIAL 2025](https://img.shields.io/badge/SIGDIAL-2025-blue.svg)](https://2025.sigdial.org/)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![arXiv](https://img.shields.io/badge/arXiv-2507.08350-b31b1b.svg)](
+[![arXiv](https://img.shields.io/badge/arXiv-2507.08350-b31b1b.svg)](https://arxiv.org/abs/2507.08350)
+
 > **Exploring Design of Multi-Agent LLM Dialogues for Research Ideation**
 
 *Accepted at SIGDIAL 2025* 🎉 — [Read on arXiv](https://arxiv.org/abs/2507.08350) 📄
