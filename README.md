@@ -9,7 +9,7 @@
 
 > **Exploring Design of Multi-Agent LLM Dialogues for Research Ideation**
 
-*Accepted at SIGDIAL 2025* 🎉
+*Accepted at SIGDIAL 2025* 🎉 — [Read on arXiv](https://arxiv.org/abs/2507.08350) 📄
 
 ## 📖 What is This?
 
@@ -112,14 +112,14 @@ multiagent_research_ideator/
 If you use this work in your research, please cite our SIGDIAL 2025 paper:
 
 ```
-@misc{ueda2025exploringdesignmultiagentllm,
-    title={Exploring Design of Multi-Agent LLM Dialogues for Research Ideation}, 
-    author={Keisuke Ueda and Wataru Hirota and Takuto Asakura and Takahiro Omi and Kosuke Takahashi and Kosuke Arima and Tatsuya Ishigaki},
-    year={2025},
-    eprint={2507.08350},
-    archivePrefix={arXiv},
-    primaryClass={cs.CL},
-    url={https://arxiv.org/abs/2507.08350}, 
+@inproceedings{ueda2025exploringdesignmultiagentllm,
+  title   = {Exploring Design of Multi-Agent LLM Dialogues for Research Ideation},
+  author  = {Keisuke Ueda and Wataru Hirota and Takuto Asakura and Takahiro Omi and Kosuke Takahashi and Kosuke Arima and Tatsuya Ishigaki},
+  booktitle = {Proceedings of the 26th Annual Meeting of the Special Interest Group on Discourse and Dialogue (SIGDIAL 2025)},
+  year   = {2025},
+  address  = {Avignon, France},
+  note   = {To appear},
+  url    = {https://arxiv.org/abs/2507.08350}
 }
 ```
 
