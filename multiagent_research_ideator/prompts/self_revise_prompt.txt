@@ -1,0 +1,9 @@
+Please revise the original research proposal based on the criticisms provided above. Your goal is to improve the ideas by addressing each point raised in the critique, making the proposal more concrete, feasible, novel, and impactful.
+
+Specifically, you should:
+- Carefully consider each criticism and modify the corresponding idea(s) to resolve the identified issues.
+- Ensure all necessary details are included, such as specific datasets, evaluation metrics, concrete prompt examples, and clear experimental steps, as pointed out by the critique.
+- If an idea is fundamentally flawed or infeasible according to the critique, you may replace it with a new, improved idea on the same topic, ensuring it still aligns with the overall research goal.
+- Maintain the original structure for each idea: (1) Problem, (2) Existing Methods, (3) Motivation, (4) Proposed Method, (5) Experiment Plan.
+
+Output the revised set of ideas in the original JSON format: a dictionary where keys are short, descriptive idea names and values are the detailed idea descriptions following the specified structure. Ensure you provide the same number of ideas as the original proposal.
