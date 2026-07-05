@@ -47,7 +47,8 @@ def better_idea(
         elif method == "zero_shot_cot":
             prompt += "Now decide which one is the accepted idea. Think step by step by writing a meta-review to compare the strengths and weaknesses of both ideas and explain why one idea is better than the other. After the meta-review, start a new line and directly return an alphabet A or B to indicate the accepted idea and end the response.\n"
         else:
-            raise ValueError(f"Invalid method: {method}")
+            message = f"Invalid method: {method}"
+            raise ValueError(message)
 
     prompt += "The order of the two papers is random. You should consider the whole paper proposal and decide which one is the accepted idea. Do not be biased by the order of the papers.\n"
 
@@ -70,7 +71,8 @@ def better_idea(
     elif response == "B":
         response = "2"
     else:
-        raise ValueError(f"Invalid response: {response}")
+        message = f"Invalid response: {response}"
+        raise ValueError(message)
     return prompt, response, cost
 
 

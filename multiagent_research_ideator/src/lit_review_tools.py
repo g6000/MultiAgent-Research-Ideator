@@ -144,7 +144,8 @@ def parse_and_execute(output):
         if keyword:
             response = KeywordQuery(keyword)
             if response is None:
-                raise ValueError(f"KeywordQuery failed for keyword: {keyword}")
+                message = f"KeywordQuery failed for keyword: {keyword}"
+                raise ValueError(message)
             if "total" in response and response["total"] == 0:
                 return None
             if response is not None:

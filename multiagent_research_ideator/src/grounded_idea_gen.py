@@ -41,7 +41,8 @@ def parse_bool(value):
         return True
     if value in {"false", "0", "no"}:
         return False
-    raise argparse.ArgumentTypeError(f"Expected a boolean value, got: {value}")
+    message = f"Expected a boolean value, got: {value}"
+    raise argparse.ArgumentTypeError(message)
 
 
 def check_idea_response_format(resp_str: str) -> Tuple[bool, str]:
@@ -288,7 +289,8 @@ def idea_generation_diverse_personas(
         prompt_role_critic = personas[random.choice(list(personas.keys()))]
         prompt_role_reviser = "You are an expert AI researcher."
     else:
-        raise ValueError(f"Invalid diverse_role: {diverse_role}")
+        message = f"Invalid diverse_role: {diverse_role}"
+        raise ValueError(message)
 
     response_proposer, cost_proposer = propose_ideas(
         method=method,
@@ -620,7 +622,8 @@ if __name__ == "__main__":
             api_key=OAI_KEY
         )
     else:
-        raise ValueError(f"Unsupported engine: {args.engine}")
+        message = f"Unsupported engine: {args.engine}"
+        raise ValueError(message)
 
     with open(args.paper_cache, "r") as f:
         lit_review = json.load(f)
@@ -672,18 +675,16 @@ if __name__ == "__main__":
     try:
         with open(PROMPTS_DIR / "self_critique_prompt.txt", "r") as f:
             critique_prompt_template = f.read()
-    except FileNotFoundError:
-        raise FileNotFoundError(
-            f"{PROMPTS_DIR}/self_critique_prompt.txt not found. Please make sure the file exists in the prompts directory."
-        )
+    except FileNotFoundError as err:
+        message = f"{PROMPTS_DIR}/self_critique_prompt.txt not found. Please make sure the file exists in the prompts directory."
+        raise FileNotFoundError(message) from err
 
     try:
         with open(PROMPTS_DIR / "self_revise_prompt.txt", "r") as f:
             revise_prompt_template = f.read()
-    except FileNotFoundError:
-        raise FileNotFoundError(
-            f"{PROMPTS_DIR}/self_revise_prompt.txt not found. Please make sure the file exists in the prompts directory."
-        )
+    except FileNotFoundError as err:
+        message = f"{PROMPTS_DIR}/self_revise_prompt.txt not found. Please make sure the file exists in the prompts directory."
+        raise FileNotFoundError(message) from err
 
     print("topic: ", topic_description)
     print("existing ideas: ", existing_ideas)
