@@ -33,7 +33,7 @@ def process_text(input_text, tokenize=False):
     if tokenize:
         return set(filtered_words)
     else:
-        return process_text
+        return processed_text
 
 
 def jaccard_similarity(set1, set2):
