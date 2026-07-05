@@ -2,6 +2,7 @@ import argparse
 import json
 import os
 import random
+import sys
 from pathlib import Path
 
 import anthropic
@@ -143,6 +144,7 @@ if __name__ == "__main__":
         idea_names = [args.idea_name]
 
     all_costs = 0
+    failed_ideas = []
     for idea_name in tqdm(idea_names):
         # Use os.path.join for all path components for better portability and correctness
         cache_dir = os.path.join(args.experiment_plan_cache_dir, args.cache_name)
@@ -179,7 +181,11 @@ if __name__ == "__main__":
 
             cache_output(idea_file, cache_file)
 
-        except:
-            print("error in generating experiment plan for idea: ", idea_name)
+        except Exception as e:
+            print("error in generating experiment plan for idea: ", idea_name, e)
+            failed_ideas.append(idea_name)
 
     print("Total cost: ", all_costs)
+    if failed_ideas:
+        print("Failed ideas: ", failed_ideas)
+        sys.exit(1)
