@@ -8,7 +8,11 @@ import anthropic
 import retry
 from openai import OpenAI
 from tqdm import tqdm
-from utils import cache_output, call_api, format_plan_json
+
+if __package__:
+    from .utils import cache_output, call_api, format_plan_json
+else:
+    from utils import cache_output, call_api, format_plan_json
 
 ROOT = Path(__file__).resolve().parent.parent
 PROMPTS_DIR = ROOT / "prompts"

@@ -4,14 +4,24 @@ import os
 
 import anthropic
 import retry
-from lit_review_tools import (
-    dedup_paper_bank,
-    format_papers_for_printing,
-    parse_and_execute,
-    print_top_papers_from_paper_bank,
-)
 from openai import OpenAI
-from utils import cache_output, call_api, format_plan_json
+
+if __package__:
+    from .lit_review_tools import (
+        dedup_paper_bank,
+        format_papers_for_printing,
+        parse_and_execute,
+        print_top_papers_from_paper_bank,
+    )
+    from .utils import cache_output, call_api, format_plan_json
+else:
+    from lit_review_tools import (
+        dedup_paper_bank,
+        format_papers_for_printing,
+        parse_and_execute,
+        print_top_papers_from_paper_bank,
+    )
+    from utils import cache_output, call_api, format_plan_json
 
 
 def initial_search(

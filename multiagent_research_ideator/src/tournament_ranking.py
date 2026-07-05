@@ -8,7 +8,11 @@ import anthropic
 import retry
 from openai import OpenAI
 from tqdm import tqdm
-from utils import call_api, format_plan_json
+
+if __package__:
+    from .utils import call_api, format_plan_json
+else:
+    from utils import call_api, format_plan_json
 
 
 @retry.retry(tries=10, delay=3)

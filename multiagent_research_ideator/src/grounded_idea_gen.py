@@ -8,9 +8,14 @@ from typing import Tuple
 
 import anthropic
 import retry
-from lit_review_tools import format_papers_for_printing
 from openai import OpenAI
-from utils import cache_output, call_api, shuffle_dict_and_convert_to_string
+
+if __package__:
+    from .lit_review_tools import format_papers_for_printing
+    from .utils import cache_output, call_api, shuffle_dict_and_convert_to_string
+else:
+    from lit_review_tools import format_papers_for_printing
+    from utils import cache_output, call_api, shuffle_dict_and_convert_to_string
 
 ROOT = Path(__file__).resolve().parent.parent
 PROMPTS_DIR = ROOT / "prompts"
