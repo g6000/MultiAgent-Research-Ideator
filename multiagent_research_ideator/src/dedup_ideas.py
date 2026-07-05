@@ -108,7 +108,7 @@ if __name__ == "__main__":
                     all_ideas.append(concatenate_idea(idea_k, idea_v))
                     all_idea_ks.append(idea_k)
                     all_idea_vs.append(idea_v)
-                except:
+                except (KeyError, TypeError):
                     continue
 
     # all_ideas = all_ideas[:40]

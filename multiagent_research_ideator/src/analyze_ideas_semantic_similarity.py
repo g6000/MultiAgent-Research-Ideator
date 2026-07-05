@@ -100,7 +100,7 @@ if __name__ == "__main__":
             for idea_k, idea_v in ideas_dict.items():
                 try:
                     all_ideas.append(concatenate_idea(idea_k, idea_v))
-                except:
+                except (KeyError, TypeError):
                     continue
 
     print("#ideas: ", len(all_ideas))

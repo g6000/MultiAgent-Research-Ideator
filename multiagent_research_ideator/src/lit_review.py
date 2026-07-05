@@ -205,7 +205,7 @@ def collect_papers(
         for k, v in response.items():
             try:
                 paper_bank[k]["score"] = v
-            except:
+            except KeyError:
                 continue
     else:
         paper_lst = []
@@ -244,7 +244,7 @@ def collect_papers(
             print("new query: ", new_query)
         try:
             paper_lst = parse_and_execute(new_query)
-        except:
+        except (AttributeError, KeyError, TypeError, ValueError):
             paper_lst = None
 
         if paper_lst:
@@ -278,7 +278,7 @@ def collect_papers(
             for k, v in response.items():
                 try:
                     paper_bank[k]["score"] = v
-                except:
+                except KeyError:
                     continue
 
         elif print_all:
