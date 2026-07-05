@@ -209,7 +209,9 @@ for topic in "${topic_names[@]}"; do
         done
 
         # delete all files in the cache_dir
-        rm -rf "${project_proposal_cache_dir}/${topic}_${discussion_type}/*"
+        proposal_cache_subdir="${project_proposal_cache_dir}/${topic}_${discussion_type}"
+        rm -rf "${proposal_cache_subdir}"
+        mkdir -p "${proposal_cache_subdir}"
         
         echo "Running experiment_plan_gen.py with cache_name: $discussion_type"
         uv run multiagent_research_ideator/src/experiment_plan_gen.py \
