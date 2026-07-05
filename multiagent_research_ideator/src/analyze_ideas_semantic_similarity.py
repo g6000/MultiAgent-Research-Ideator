@@ -175,16 +175,16 @@ if __name__ == "__main__":
     for i in range(len(all_ideas)):
         for j in range(i + 1, len(all_ideas)):
             similarity = similarity_matrix[i][j]
-            for bucket in buckets:
+            for bucket, pairs in buckets.items():
                 if bucket[0] <= similarity < bucket[1]:
-                    buckets[bucket].append((all_ideas[i], all_ideas[j], similarity))
+                    pairs.append((all_ideas[i], all_ideas[j], similarity))
                     break
 
     # Print one random idea pair from each bucket
     print("\n\nIdea pairs by similarity interval:")
-    for bucket in buckets:
-        if buckets[bucket]:
-            sampled_pair = random.choice(buckets[bucket])
+    for bucket, pairs in buckets.items():
+        if pairs:
+            sampled_pair = random.choice(pairs)
             print(f"\nInterval {bucket[0]:.2f} - {bucket[1]:.2f}:")
             print(
                 f"{sampled_pair[0]}\nand\n{sampled_pair[1]}\n\nSimilarity: {sampled_pair[2]:.2f}\n"

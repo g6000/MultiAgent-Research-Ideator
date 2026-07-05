@@ -2,6 +2,7 @@ import argparse
 import json
 import os
 import string
+import sys
 
 import numpy as np
 from nltk.corpus import stopwords
@@ -120,7 +121,7 @@ if __name__ == "__main__":
     )
     if len(similarity_matrix) != len(all_ideas):
         print("Error: similarity matrix size mismatch")
-        exit(0)
+        sys.exit(1)
 
     final_ideas = {}
     filter_idx = []  ## ideas that should be filtered
@@ -132,8 +133,10 @@ if __name__ == "__main__":
             ## filter out similar ideas
             for j in range(i + 1, len(all_ideas)):
                 if (
-                    j not in filter_idx
-                    and similarity_matrix[i][j] > args.similarity_threshold
+                    (
+                        j not in filter_idx
+                        and similarity_matrix[i][j] > args.similarity_threshold
+                    )
                     or all_idea_ks[j] == all_idea_ks[i]
                 ):
                     filter_idx.append(j)
