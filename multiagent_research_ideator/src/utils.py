@@ -3,21 +3,24 @@ import random
 
 
 def calc_price(model, usage):
-    if "claude-3-5-sonnet" in model:
+    model_name = model.lower()
+    if "claude-3-5-sonnet" in model_name:
         return (3.0 * usage.input_tokens + 15.0 * usage.output_tokens) / 1000000.0
-    if model == "gpt-4o":
+    if "gpt-4o-mini" in model_name:
+        return (0.15 * usage.prompt_tokens + 0.6 * usage.completion_tokens) / 1000000.0
+    if model_name == "gpt-4o" or model_name.startswith("gpt-4o-"):
         return (2.5 * usage.prompt_tokens + 10.0 * usage.completion_tokens) / 1000000.0
-    if model == "o1-preview":
+    if model_name == "o1-preview":
         return (15.0 * usage.prompt_tokens + 60.0 * usage.completion_tokens) / 1000000.0
-    if model == "o1-mini":
+    if model_name == "o1-mini":
         return (3.0 * usage.prompt_tokens + 12.0 * usage.completion_tokens) / 1000000.0
-    if "llama-3.1-8b" in model.lower():
+    if "llama-3.1-8b" in model_name:
         return (0.18 * usage.prompt_tokens + 0.18 * usage.completion_tokens) / 1000000.0
-    if "llama-3.1-70b" in model.lower():
+    if "llama-3.1-70b" in model_name:
         return (0.88 * usage.prompt_tokens + 0.88 * usage.completion_tokens) / 1000000.0
-    if "llama-3.1-405b" in model.lower():
+    if "llama-3.1-405b" in model_name:
         return (3.5 * usage.prompt_tokens + 3.5 * usage.completion_tokens) / 1000000.0
-    if "qwen2.5-72b" or "qwq-32b" in model.lower():
+    if "qwen2.5-72b" in model_name or "qwq-32b" in model_name:
         return (1.2 * usage.prompt_tokens + 1.2 * usage.completion_tokens) / 1000000.0
 
     return None
