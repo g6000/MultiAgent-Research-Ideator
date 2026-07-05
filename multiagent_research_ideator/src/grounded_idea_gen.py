@@ -28,6 +28,17 @@ REQUIRED_FIELDS = {
 }
 
 
+def parse_bool(value):
+    if isinstance(value, bool):
+        return value
+    value = value.lower()
+    if value in {"true", "1", "yes"}:
+        return True
+    if value in {"false", "0", "no"}:
+        return False
+    raise argparse.ArgumentTypeError(f"Expected a boolean value, got: {value}")
+
+
 def check_idea_response_format(resp_str: str) -> Tuple[bool, str]:
     """
     Validate response JSON against the expected 'idea' schema.
@@ -538,8 +549,8 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--RAG",
-        type=str,
-        default="True",
+        type=parse_bool,
+        default=True,
         required=True,
         help="whether to do RAG for idea generation",
     )
@@ -613,7 +624,7 @@ if __name__ == "__main__":
     paper_bank = lit_review["paper_bank"]
 
     ## cache dir and file
-    if args.RAG == "True":
+    if args.RAG:
         print("RAG is enabled for idea generation")
     else:
         print("RAG is disabled for idea generation")
