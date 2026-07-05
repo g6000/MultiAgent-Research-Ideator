@@ -7,6 +7,7 @@ import requests
 search_url = "https://api.semanticscholar.org/graph/v1/paper/search/"
 graph_url = "https://api.semanticscholar.org/graph/v1/paper/"
 rec_url = "https://api.semanticscholar.org/recommendations/v1/papers/forpaper/"
+REQUEST_TIMEOUT = 30
 
 
 S2_KEY = os.getenv("s2_key").strip()
@@ -20,7 +21,9 @@ def KeywordQuery(keyword):
         "fields": "title,year,citationCount,abstract,tldr",
     }
     headers = {"x-api-key": S2_KEY}
-    response = requests.get(search_url, params=query_params, headers=headers)
+    response = requests.get(
+        search_url, params=query_params, headers=headers, timeout=REQUEST_TIMEOUT
+    )
 
     if response.status_code == 200:
         return response.json()
@@ -37,7 +40,10 @@ def PaperQuery(paper_id):
     }
     headers = {"x-api-key": S2_KEY}
     response = requests.get(
-        url=rec_url + paper_id, params=query_params, headers=headers
+        url=rec_url + paper_id,
+        params=query_params,
+        headers=headers,
+        timeout=REQUEST_TIMEOUT,
     )
 
     if response.status_code == 200:
@@ -54,7 +60,10 @@ def PaperDetails(
     paper_data_query_params = {"fields": fields}
     headers = {"x-api-key": S2_KEY}
     response = requests.get(
-        url=graph_url + paper_id, params=paper_data_query_params, headers=headers
+        url=graph_url + paper_id,
+        params=paper_data_query_params,
+        headers=headers,
+        timeout=REQUEST_TIMEOUT,
     )
 
     if response.status_code == 200:
